@@ -32,8 +32,7 @@ def add_db(finane_data, ticker_name):
     con.commit()
 
 
-es = yfinance.download("ES=F", period="3y", interval="1wk")
-zb = yfinance.download("ZB=F", period="3y", interval="1wk")
-
-add_db(es, "ES")
-add_db(zb, "ZB")
+ticker_list = ["ES=F", "ZB=F"]
+for ticker in ticker_list:
+    data = yfinance.download(ticker, period="3y", interval="1wk")
+    add_db(data, ticker)
